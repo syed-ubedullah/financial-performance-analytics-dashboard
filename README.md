@@ -1,15 +1,49 @@
+<div align="center">
+
 # Financial Performance Analytics Dashboard
 
-**Profitability, liquidity, cash flow and valuation analysis of Indian listed companies (FY2024)**
+### Profitability, liquidity, cash flow and valuation analysis of Indian listed companies (FY2024)
 
-![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=flat&logo=powerbi&logoColor=black)
-![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=flat&logo=microsoftsqlserver&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![DAX](https://img.shields.io/badge/DAX-0E7C66?style=flat)
+<br>
+
+![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
+![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
+![DAX](https://img.shields.io/badge/DAX-0E7C66?style=for-the-badge)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+
+[![Full Report](https://img.shields.io/badge/Full_Report-PDF-0E7C66?style=flat-square&logo=adobeacrobatreader&logoColor=white)](report/Financial_Performance_Analytics_Report.pdf)
+[![Dataset](https://img.shields.io/badge/Dataset-Kaggle-20BEFF?style=flat-square&logo=kaggle&logoColor=white)](https://www.kaggle.com/datasets/pacificrm/financial-sheets)
+[![License](https://img.shields.io/badge/License-MIT-1F2A2E?style=flat-square)](LICENSE)
+[![Open to work](https://img.shields.io/badge/Open_to-Data_Analyst_Roles-0E7C66?style=flat-square)](https://www.linkedin.com/in/syed-ubedullah-basha)
+
+<br>
+
+[![Dashboard overview](screenshots/01_Overview.png)](report/Financial_Performance_Analytics_Report.pdf)
+
+</div>
 
 An end-to-end analytics project: raw Kaggle CSVs are cleaned and reshaped in **Python**, modelled and queried in **SQL Server**, and presented as a five-page interactive **Power BI** dashboard with written insights and recommendations.
 
-![Overview](screenshots/01_Overview.png)
+---
+
+## Contents
+
+- [Key numbers](#key-numbers-fy2024-non-financial-companies)
+- [Business questions](#business-questions)
+- [Key findings](#key-findings)
+- [Dashboard pages](#dashboard-pages)
+- [Workflow](#workflow)
+- [Data model](#data-model)
+- [Data](#data)
+- [Design decisions](#design-decisions-worth-noting)
+- [Skills demonstrated](#skills-demonstrated)
+- [Repository structure](#repository-structure)
+- [How to reproduce](#how-to-reproduce)
+- [Limitations](#limitations)
+- [Connect with me](#connect-with-me)
 
 ---
 
@@ -53,9 +87,19 @@ An end-to-end analytics project: raw Kaggle CSVs are cleaned and reshaped in **P
 | 04 Cash Flow & Valuation | Operating and free cash flow, cash conversion, P/E and P/B by size, cash-flow red flags |
 | 05 Key Insights | One-page summary of findings and recommendations |
 
+### 01 Overview
+![Overview](screenshots/01_Overview.png)
+
+### 02 Profitability
 ![Profitability](screenshots/02_Profitability.png)
+
+### 03 Liquidity & Solvency
 ![Liquidity and Solvency](screenshots/03_Liquidity_Solvency.png)
+
+### 04 Cash Flow & Valuation
 ![Cash Flow and Valuation](screenshots/04_CashFlow_Valuation.png)
+
+### 05 Key Insights
 ![Key Insights](screenshots/05_Key_Insights.png)
 
 ## Workflow
@@ -78,7 +122,7 @@ Kaggle CSVs (11 files)  ->  Python (clean, reshape)  ->  SQL Server (schema, que
 
 ## Data
 
-- **Source:** Kaggle dataset [pacificrm/financial-sheets](https://www.kaggle.com/datasets/pacificrm/financial-sheets), Indian listed companies on BSE and NSE. The raw CSVs are not included in this repository; see `data/README.md`.
+- **Source:** Kaggle dataset [pacificrm/financial-sheets](https://www.kaggle.com/datasets/pacificrm/financial-sheets), Indian listed companies on BSE and NSE. The raw CSVs are not included in this repository; see [`data/README.md`](data/README.md).
 - **Scale:** 4,668 companies, 107 industries; 8 of the 11 CSV files are used.
 - **Period:** FY2024 and FY2023 only (the file holds two annual periods).
 
@@ -88,6 +132,17 @@ Kaggle CSVs (11 files)  ->  Python (clean, reshape)  ->  SQL Server (schema, que
 - **Medians over averages.** ROE ranges from -3,559% to 13,100% across companies, so industry comparisons use medians.
 - **Unit consistency.** ROE and ROCE are stored as percentage numbers while margins are fractions; each measure has its own format string.
 - **Financial sector handled separately.** Banks and NBFCs (628 companies) are flagged and excluded from leverage and liquidity ratios.
+
+## Skills demonstrated
+
+| Area | Evidence |
+|---|---|
+| Data cleaning (Python, pandas) | Wide-to-long reshape, derived metrics, outlier and missing-value decisions |
+| SQL Server | Schema design, keys, bulk load, window functions, CTEs, views, validation |
+| Data modelling | Star schema with shared dimensions; snapshot versus time-series facts |
+| DAX | Time comparison, medians, threshold-based Top-N measures, custom formats |
+| Dashboard design | Custom theme, navigator, synced slicers, bookmark toggles, conditional formatting |
+| Analytical thinking | Questions defined first, caveats stated, findings tied to numbers |
 
 ## Repository structure
 
@@ -118,8 +173,8 @@ financial-performance-analytics-dashboard/
 
 ## How to reproduce
 
-1. Download the dataset from Kaggle (see `data/README.md`) and unzip the 11 CSV files into `data/raw/`.
-2. Set `IN_DIR` in `python/01_clean_and_reshape.py` to the folder with the CSVs and run `python python/01_clean_and_reshape.py`. It writes five clean CSVs and a data-quality report.
+1. Download the dataset from Kaggle (see [`data/README.md`](data/README.md)) and unzip the 11 CSV files into `data/raw/`.
+2. Run `python python/01_clean_and_reshape.py`. It reads `data/raw/` and writes five clean CSVs and a data-quality report to `clean_output/`.
 3. Run `sql/02_create_tables_and_load.sql` in SQL Server Management Studio (update the file paths in `BULK INSERT`, or use the Import Wizard) and confirm the row counts: 4,668 / 9,330 / 9,330 / 4,668 / 4,668.
 4. Run `sql/03_analysis_queries_and_views.sql` to explore the analysis and create the views.
 5. Open `powerbi/Financial_Performance_Analytics_Dashboard.pbix`, point the data source to your SQL Server database, refresh, and set **Year = 2024** and **Sector = Non-Financial**.
@@ -134,14 +189,36 @@ financial-performance-analytics-dashboard/
 
 ## Full report
 
-A 13-page write-up with methodology, data-quality decisions and page-by-page insights: [`report/Financial_Performance_Analytics_Report.pdf`](report/Financial_Performance_Analytics_Report.pdf)
+A 13-page write-up with methodology, data-quality decisions and page-by-page insights:
+[`report/Financial_Performance_Analytics_Report.pdf`](report/Financial_Performance_Analytics_Report.pdf)
 
 ## License
 
 Code and report are released under the [MIT License](LICENSE). The dataset belongs to its original author and is subject to its own Kaggle license.
 
-## Author
+---
 
-**Syed Ubedullah Basha**: Data Analyst | Power BI Developer | SQL Developer
+## Connect with me
 
-[LinkedIn](https://www.linkedin.com/in/syed-ubedullah-basha) | [GitHub](https://github.com/syed-ubedullah) | syedubedullahbasha@gmail.com
+<div align="center">
+
+### Syed Ubedullah Basha
+**Data Analyst | Power BI Developer | SQL Developer**
+
+Open to Data Analyst, Power BI Developer, SQL Developer and BI Analyst roles.
+
+<br>
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/syed-ubedullah-basha)
+[![Gmail](https://img.shields.io/badge/Gmail-Email_Me-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:syedubedullahbasha@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/syed-ubedullah)
+
+<br>
+
+[linkedin.com/in/syed-ubedullah-basha](https://www.linkedin.com/in/syed-ubedullah-basha) &nbsp;|&nbsp; [syedubedullahbasha@gmail.com](mailto:syedubedullahbasha@gmail.com) &nbsp;|&nbsp; [github.com/syed-ubedullah](https://github.com/syed-ubedullah)
+
+<br>
+
+If you found this project useful, consider giving it a star.
+
+</div>
